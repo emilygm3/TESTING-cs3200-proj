@@ -4,7 +4,12 @@ from backend.db_connection import db
 from backend.simple.playlist import sample_playlist_data
 
 # This blueprint handles some basic routes that you can use for testing
+# blueprint = collection of routes!
 simple_routes = Blueprint('simple_routes', __name__)
+'''
+How the rest of flask knows the simple routes are here: (?)
+rest_entry.py smth smth
+'''
 
 
 # ------------------------------------------------------------
@@ -37,6 +42,14 @@ def affirmation():
     <br />
     You only need to be 1% better today than you were yesterday!
     '''
+    response = make_response(message)
+    response.status_code = 200
+    return response
+
+
+@simple_routes.route('/hello')
+def hello():
+    message = "<H1> Hello databases class. I am sleepy. </H1>"
     response = make_response(message)
     response.status_code = 200
     return response
